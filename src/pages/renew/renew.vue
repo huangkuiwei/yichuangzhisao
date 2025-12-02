@@ -277,7 +277,7 @@ const submit = () => {
 
     <view class="renew-box">
       <template v-if="shopInfo && shopInfo.appid">
-        <view class="title">扫描大王连续包月会员</view>
+        <view class="title">易创智扫连续包月会员</view>
         <view class="tip">已开通自动续费</view>
 
         <view class="renew-info">

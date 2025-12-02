@@ -99,7 +99,7 @@
         </template>
         <view></view>
       </wd-cell>
-      <button class="contact-btn" @click="openContact" style="margin-bottom: 16rpx">
+      <button class="contact-btn" open-type="contact" style="margin-bottom: 16rpx">
         <image class="my-cell_img" mode="heightFix" src="https://hnenjoy.oss-cn-shanghai.aliyuncs.com/scantool/static/assets/my2/m4.png"></image>
         <text style="color: #333333; font-weight: bold">客服中心</text>
         <view style="color: #cccccc;">

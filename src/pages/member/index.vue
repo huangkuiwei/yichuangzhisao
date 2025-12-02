@@ -43,7 +43,7 @@
       <view style="height: 0.5rem;"></view>
       <view class="member-grid" v-if="platform !== 'ios'">
         <view @click="memberSelect(item)" class="member-grid_li" :class="{'active': item.select}" v-for="(item,index) in lists" :key="index">
-          <view class="hot" v-if="item.id === 10003">推荐</view>
+          <view class="hot" v-if="item.id === 10009">推荐</view>
 
           <view style="font-size: 22rpx; color: #854E12; padding: 42rpx 0 10rpx 0">{{item.name}}</view>
           <view class="member-price">
@@ -207,7 +207,7 @@
     </view>
 
     <view class="global-m contact-btn-m" v-else>
-      <button class="contact-btn" @click="openContact">联系客服</button>
+      <button class="contact-btn" open-type="contact">联系客服</button>
     </view>
     
   </wd-popup>
@@ -289,12 +289,12 @@ const getProductList = async () => {
   $http.get('api/global/product/get').then(res => {
     res.data.splice(1, 0, {
       price: 2990,
-      product_name: '扫描大王连续包月',
-      id: 10003
+      product_name: '连续包月',
+      id: 10009
     })
 
     // 调整顺序
-    let index = res.data.findIndex(item => item.product_name === '扫描大王日会员')
+    let index = res.data.findIndex(item => item.product_name.includes('日会员'))
 
     if (index !== -1) {
       let item = res.data[index]
