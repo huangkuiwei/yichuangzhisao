@@ -1,0 +1,16 @@
+.certificate{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  font-size: 0.75rem;
+  background: #2D2D2D;
+  padding: 5px 10px;
+}
+.certificate-li{
+  border: 1px solid #2D2D2D;
+  padding: 4px 1px;
+  border-radius: 5px;
+}
+.certificate-li.active{
+  border: 1px solid #ECECEC;
+}

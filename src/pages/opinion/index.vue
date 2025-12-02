@@ -1,0 +1,101 @@
+<template>
+  <view class="global-m">
+    <wd-textarea placeholder="请输入您要反馈的意见或建议（5-500字以内）" v-model="content"></wd-textarea>
+    <view style="height: 0.8rem;"></view>
+    <wd-card custom-class="h-card">
+      <view>
+        <view style="margin-bottom: 0.4rem;">请提供问题的截图或图片（选填）</view>
+        <wd-upload
+            fileType="image"
+            v-model:file-list="fileList"
+            :limit="5"
+            :showLimitNum="true"
+            :sourceType="['album']"
+            name="file"
+            :header="{
+              token: token
+            }"
+            action="https://toolsapi.xiaoohui.com/api/global/fileupload/upload"
+        ></wd-upload>
+      </view>
+    </wd-card>
+    <view class="font-tip">
+      您的反馈我们会尽快解决，但无法保证每一条都能及时受理。如果有紧急咨询， 请直接拨打客服电话：400-000-0000
+    </view>
+  </view>
+  <view class="opinion-btn">
+    <view style="padding: 0 1rem;">
+      <wd-button block @click="submit">
+        提 交
+      </wd-button>
+    </view>
+  </view>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import $http from '@/hooks/http'
+
+const content = ref('')
+const fileList = ref([])
+const token = ref(uni.getStorageSync('toolsToken'))
+
+const submit = () => {
+  if (!content.value) {
+    uni.showToast({
+      title: '意见不能为空',
+      icon: 'none',
+    })
+
+    return
+  }
+
+  let imgUrls = fileList.value.map(file => {
+    let res = JSON.parse(file?.response)
+    return res?.data
+  }).filter(item => item)
+
+  uni.showLoading({
+    title: '提交中...',
+    mask: true,
+  })
+
+  $http.post('api/user/profile/suggestion/add', {
+    content: content.value,
+    img_urls: imgUrls,
+  }).then(() => {
+    uni.showToast({
+      title: '意见提交成功',
+      icon: 'success'
+    })
+
+    content.value = ''
+    fileList.value = []
+  }).catch(() => {
+    uni.hideLoading()
+  })
+}
+</script>
+<style>
+page{
+  background: rgba(246, 247, 251, 1);
+}
+</style>
+<style scoped lang="scss">
+.global-m{
+  --wot-card-padding: 0.6rem;
+  --wot-card-margin: 0;
+}
+.opinion-btn{
+  --wot-button-primary-bg-color: rgba(35, 156, 247, 1);
+  --wot-button-primary-color: rgba(255, 255, 255, 1);
+  --wot-button-medium-fs: 1.4rem;
+  --wot-button-medium-padding: 1.5rem 0;
+}
+.opinion-btn{
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  width: 100vw;
+}
+</style>

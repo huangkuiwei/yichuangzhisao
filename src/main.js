@@ -1,0 +1,23 @@
+import {
+	createSSRApp
+} from "vue";
+import App from "./App.vue";
+// const towxml = require("./wxcomponents/towxml/index")
+import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue';
+import uniPopupDialog from '@dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog.vue';
+import uniTransition from '@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue';
+
+
+export function createApp() {
+	const app = createSSRApp(App);
+	app.config.globalProperties.$ossUrl = 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/';
+	app.config.globalProperties.$viewUrl = 'https://fiewview.xiaoohui.com/onlinePreview?url=';
+	app.config.globalProperties.$picsUrl = 'https://fiewview.xiaoohui.com/picturesPreview?urls=';
+	app.component('uni-popup', uniPopup);
+	app.component('uni-popup-dialog', uniPopupDialog);
+	app.component('uni-transition', uniTransition);
+	// app.config.globalProperties.$towxml = towxml
+	return {
+		app,
+	};
+}
