@@ -58,7 +58,7 @@
 
 <script lang="ts" setup>
 import { ref, nextTick } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { toRouter } from '@/hooks/utils'
 const app = getApp();
 console.log(app.globalData);
@@ -89,6 +89,14 @@ const hideReply = ref(false);
 const canvasOffScreenable = ref<boolean>(
   uni.canIUse("createOffscreenCanvas") && Boolean(uni.createOffscreenCanvas)
 ); // 是否可以使用离屏canvas
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 onLoad((options) => {
   hideReply.value = options.hideReply === 'true'

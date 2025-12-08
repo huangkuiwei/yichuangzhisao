@@ -175,7 +175,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, nextTick, watch } from 'vue'
 import { toRouter } from "@/hooks/utils";
-import { onLoad, onShow } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage, onShow } from '@dcloudio/uni-app'
 import {
   fileTypes,
   ustate,
@@ -386,6 +386,14 @@ const getCount = async () => {
     count.value = res.data.left
   }
 }
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 watch(tab, async () => {
   await getCount()

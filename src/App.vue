@@ -8,8 +8,8 @@ export default {
     console.log('App Launch')
     let isModalShowing = false;
     uni.setStorageSync('$ossUrl', 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/')
-    uni.setStorageSync('$viewUrl', 'https://fiewview.xiaoohui.com/onlinePreview?url=')
-    uni.setStorageSync('$picsUrl', 'https://fiewview.xiaoohui.com/picturesPreview?urls=')
+    uni.setStorageSync('$viewUrl', 'https://file.yichung.cn/onlinePreview?url=')
+    uni.setStorageSync('$picsUrl', 'https://file.yichung.cn/picturesPreview?urls=')
     // uni.addInterceptor('request', {
     //   invoke(args) {
     //
@@ -25,7 +25,7 @@ export default {
     //     }
     //
     //     // let username = uni.getStorageSync('username')
-    //     // if(!username && !args.url.includes('https://toolsapi.xiaoohui.com')){
+    //     // if(!username && !args.url.includes('https://smapi.yichung.cn')){
     //     //   if( args.url.indexOf('api/login') >= 0 || args.url.indexOf('api/sms') >= 0 ){
     //     //
     //     //   } else {

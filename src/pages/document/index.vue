@@ -231,6 +231,14 @@ onLoad(() => {
   })
 })
 
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
+
 onShow(() => {
   tindex.value = -1
   fileUrl.value = []
@@ -259,19 +267,13 @@ onShow(() => {
     }).finally(() => {
       uni.hideLoading()
     })
-  }).catch(() => {
+  }).catch((err) => {
+    if (err.Code === -100) {
+      files.value = []
+    }
     uni.hideLoading()
   })
 })
-
-// TODO
-// onShareAppMessage((res) => {
-//   return {
-//     title: "分享",
-//     path: "/pages/preview/index?shareUrl=" + encodeURIComponent(shareUrl.value) + "&shareType=file",
-//     imageUrl: shareUrl.value,
-//   };
-// });
 
 onPullDownRefresh(() => {
   initDictionary(lastFolderInfo.value.id).then((data) => {

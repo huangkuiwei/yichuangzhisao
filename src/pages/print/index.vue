@@ -11,13 +11,21 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 
 const shareUrl = ref('')
 onLoad(function(options) {
   if (options.shareUrl) {
     shareUrl.value = decodeURIComponent(options.shareUrl)
+  }
+})
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
   }
 })
 

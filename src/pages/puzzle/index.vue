@@ -28,13 +28,20 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { uploadBase64, toSwich } from '@/hooks/utils'
 import { useToast } from '/node_modules/wot-design-uni'
 import { shareShow} from '@/section/share'
 import Share from '@/section/share.vue'
 const toast = useToast()
 
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const url = ref("");
 const canvasOffScreenable = ref<boolean>(

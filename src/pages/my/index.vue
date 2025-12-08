@@ -143,7 +143,7 @@
 
 <script setup>
 import { ref, getCurrentInstance } from 'vue'
-import { onLoad, onShow } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage, onShow } from '@dcloudio/uni-app'
 import { toRouter } from '@/hooks/utils'
 import NavBar from '@/section/a-navbar.vue'
 import { useMessage } from '/node_modules/wot-design-uni'
@@ -157,6 +157,13 @@ const appContext = instance?.appContext
 
 // const xmlData = ref(getApp().globalData.$towxml('111', 'markdown'))
 
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const msgRef = ref(null), user = ref({})
 const message = useMessage()

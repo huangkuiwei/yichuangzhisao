@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { Base64 } from "js-base64";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { useToast } from "/node_modules/wot-design-uni";
 const src = ref("");
 const toast = useToast();
@@ -20,17 +20,29 @@ onLoad((options) => {
   console.log(options);
   fid.value = options.id;
   if (options.url) {
-    if( options.url.indexOf(".pdf") >= 0 ){
-      src.value = decodeURIComponent(options.url);
-    } else {
-      src.value =
-      "https://fiewview.xiaoohui.com/onlinePreview?url=" +
-      Base64.encode(options.url);
-      console.log( src.value );
-    }
+    // if( options.url.indexOf(".pdf") >= 0 ){
+    //   src.value = decodeURIComponent(options.url);
+    // } else {
+    //   src.value =
+    //   "https://file.yichung.cn/onlinePreview?url=" +
+    //   Base64.encode(options.url);
+    //   console.log( src.value );
+    // }
+
+    src.value =
+        "https://file.yichung.cn/onlinePreview?url=" +
+        Base64.encode(options.url);
   }
   console.log("onLoad");
 });
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const toTransformPics = () => {};
 

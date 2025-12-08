@@ -15,7 +15,7 @@
             :header="{
               token: token
             }"
-            action="https://toolsapi.xiaoohui.com/api/global/fileupload/upload"
+            action="https://smapi.yichung.cn/api/global/fileupload/upload"
         ></wd-upload>
       </view>
     </wd-card>
@@ -35,6 +35,15 @@
 <script setup>
 import { ref } from 'vue'
 import $http from '@/hooks/http'
+import { onShareAppMessage } from '@dcloudio/uni-app'
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const content = ref('')
 const fileList = ref([])

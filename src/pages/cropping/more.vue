@@ -9,13 +9,22 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 import { toRouter } from '@/hooks/utils'
 const urls = ref([])
 onLoad( (params) => {
   urls.value = params.urls.split(',')
 } )
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
+
 const toCrop = (url) => {
   toRouter('/pages/cropping/index', `url=${url}`)
 }

@@ -210,6 +210,14 @@ export default {
     };
   },
 
+  onShareAppMessage() {
+    return {
+      title: '高清电子文档一键转换',
+      imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+      path: '/pages/index/index',
+    }
+  },
+
   onLoad() {
     this.sign_order_no = uni.getStorageSync('sign_order_no')
     let drawCount = uni.getStorageSync('drawCount')

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { onShow } from '@dcloudio/uni-app'
+import { onShareAppMessage, onShow } from '@dcloudio/uni-app'
 import uniIcon from '@dcloudio/uni-ui/lib/uni-icons/uni-icons'
 import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup'
 import $http from '@/hooks/http'
@@ -29,6 +29,14 @@ const codeTip = computed(() => {
     return `${countdown.value}S重新获取`;
   } else {
     return '获取验证码';
+  }
+})
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
   }
 })
 

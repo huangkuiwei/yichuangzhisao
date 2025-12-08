@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { toRouter } from '@/hooks/utils'
 import { ref } from 'vue'
 import { useToast } from '/node_modules/wot-design-uni'
@@ -45,6 +45,14 @@ const toast = useToast()
 const url = ref('')
 const docmind = ref('')
 const channel = ref('')
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 onLoad((options) => {
   if( options.docmind ){

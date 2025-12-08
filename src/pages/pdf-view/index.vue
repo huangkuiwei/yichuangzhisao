@@ -4,11 +4,19 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, nextTick } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { Base64 } from "js-base64";
 const pdfUrl = ref(null);
 const showRight = ref(true);
 const imageState = ref(true);
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 onLoad((options) => {
   console.log(options.url);

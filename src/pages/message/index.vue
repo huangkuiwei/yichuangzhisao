@@ -33,8 +33,17 @@
 
 <script setup>
 import {ref, watchEffect} from 'vue'
+import { onShareAppMessage } from '@dcloudio/uni-app'
 
 const noticeList =ref([])
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 watchEffect(() => {
   noticeList.value = [

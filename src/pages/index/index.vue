@@ -374,13 +374,13 @@ onShow(() => {
   initFile()
 })
 
-// onShareAppMessage((res) => {
-//   return {
-//     title: "分享",
-//     path: "/pages/preview/index?shareUrl=" + encodeURIComponent(shareUrl.value) + '&shareType=file',
-//     imageUrl: shareUrl.value,
-//   };
-// })
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const toShareFile = (item) => {
   uni.showLoading({
@@ -427,6 +427,10 @@ const initFile = () => {
     hideLoginBox: true
   }).then((res) => {
     files.value = res.data?.slice(0, 6);
+  }).catch((err) => {
+    if (err.Code === -100) {
+      files.value = []
+    }
   }).finally(() => {
     uni.hideLoading()
   })

@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 
 let previewFileUrl = ref([])
@@ -19,6 +19,14 @@ onLoad((options) => {
   previewFileUrl.value = decodeURIComponent(options.previewFileUrl)
   type.value = options.type
   title.value = options.title
+})
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
 })
 </script>
 

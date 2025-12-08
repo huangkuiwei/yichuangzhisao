@@ -11,8 +11,8 @@ import uniTransition from '@dcloudio/uni-ui/lib/uni-transition/uni-transition.vu
 export function createApp() {
 	const app = createSSRApp(App);
 	app.config.globalProperties.$ossUrl = 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/';
-	app.config.globalProperties.$viewUrl = 'https://fiewview.xiaoohui.com/onlinePreview?url=';
-	app.config.globalProperties.$picsUrl = 'https://fiewview.xiaoohui.com/picturesPreview?urls=';
+	app.config.globalProperties.$viewUrl = 'https://file.yichung.cn/onlinePreview?url=';
+	app.config.globalProperties.$picsUrl = 'https://file.yichung.cn/picturesPreview?urls=';
 	app.component('uni-popup', uniPopup);
 	app.component('uni-popup-dialog', uniPopupDialog);
 	app.component('uni-transition', uniTransition);

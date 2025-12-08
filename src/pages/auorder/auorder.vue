@@ -20,6 +20,7 @@
 
 <script>
 import $http from '@/hooks/http'
+import { onShareAppMessage } from '@dcloudio/uni-app'
 
 export default {
   name: 'auorderPage',
@@ -37,6 +38,15 @@ export default {
   onReady() {
     this.$refs.checkConfirmDialog.open();
   },
+
+  onShareAppMessage() {
+    return {
+      title: '高清电子文档一键转换',
+      imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+      path: '/pages/index/index',
+    }
+  },
+
   methods: {
     //点击确认领取
     confirmReceive() {

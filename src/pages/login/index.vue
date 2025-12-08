@@ -7,7 +7,7 @@
       <wd-img
         width="99px"
         height="99px"
-        src="https://hnenjoy.oss-cn-shanghai.aliyuncs.com/scantool/static/assets/images/logo.png"
+        src="https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/logo.png?t=123"
       ></wd-img>
     </view>
     <view style="margin-top: 2rem;">
@@ -62,11 +62,20 @@ import { ref } from 'vue'
 import validator from 'validator'
 import { toLogin, toVercode } from './login.ts'
 import $http from '@/hooks/http'
+import { onShareAppMessage } from '@dcloudio/uni-app'
 
 const verState = ref(true), time = ref(60*1000)
 const sign = ref(null)
 const vercode = ref(null), username = ref(uni.getStorageSync('username_lg'))
 const radio = ref( false ), countDown = ref(null)
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const getVercode = () => {
   const isPhone = validator.isMobilePhone(username.value, 'zh-CN');

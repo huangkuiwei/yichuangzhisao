@@ -33,6 +33,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { onShareAppMessage } from '@dcloudio/uni-app'
 const list1 = ref([
   { name: '钢管', checked: false, count: 0, url: 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/icons/detect1.png' },
   { name: '方管', checked: false, count: 0, url: 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/icons/detect2.png' },
@@ -47,6 +48,14 @@ const list2 = ref([
   { name: '瓶子', checked: false, count: 0, url: 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/icons/tongyong4.png' },
   { name: '药丸', checked: false, count: 0, url: 'https://yonganpicture.oss-cn-shenzhen.aliyuncs.com/icons/tongyong5.png' }
 ])
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const tocheck = (item) => {
   item.checked =!item.checked

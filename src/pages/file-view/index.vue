@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { getFile, toOssImage } from './index'
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { shareShow} from '@/section/share'
 import Share from '@/section/share.vue'
 import { ref } from 'vue'
@@ -50,6 +50,14 @@ onLoad( (options) => {
     prefix.value = res.data.prefix
   } )
 } )
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const toOss = () => {
   toOssImage(url.value).then(() => {

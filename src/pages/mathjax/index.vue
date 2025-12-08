@@ -41,7 +41,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { useToast } from '/node_modules/wot-design-uni'
 import { toRouter,toSwich } from '@/hooks/utils'
 import $http from '@/hooks/http'
@@ -54,6 +54,14 @@ let shareUrl = ref('');
 const radio = ref(null)
 
 const textList = ref([])
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 let textPositionStyle = computed(() => {
   return (range, text = '') => {

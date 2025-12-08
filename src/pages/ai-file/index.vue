@@ -72,7 +72,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { Base64 } from "js-base64";
 import { shareShow} from '@/section/share'
 import Share from '@/section/share.vue'
@@ -94,6 +94,14 @@ onLoad((options) => {
   }
   channel.value = options.channel;
 });
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const toTransformFile = () => {
   console.log(files.value[0]);

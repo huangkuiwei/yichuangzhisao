@@ -66,7 +66,7 @@
 <script setup>
 import { ref } from "vue";
 import $http from '@/hooks/http'
-import { onShow } from '@dcloudio/uni-app'
+import { onShareAppMessage, onShow } from '@dcloudio/uni-app'
 import { toRouter } from '@/hooks/utils'
 
 const previewImg = ref('')
@@ -84,6 +84,14 @@ const originalImgInfo = ref({})
 
 const countTipDialog = ref(false);
 const count = ref(0);
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const getCount = () => {
   return $http.get('api/user/tools/pic/tools_left/RemoveWatermark').then((res) => {

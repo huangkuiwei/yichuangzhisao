@@ -65,6 +65,15 @@
 <script setup>
 import { ref } from 'vue'
 import { toSwich } from '@/hooks/utils'
+import { onShareAppMessage } from '@dcloudio/uni-app'
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const tindex = ref(1)
 const lists = ref([

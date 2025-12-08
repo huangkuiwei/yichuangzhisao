@@ -1,5 +1,5 @@
 <script setup>
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import { ref } from 'vue'
 
 const title = ref('')
@@ -7,6 +7,14 @@ const title = ref('')
 onLoad((options) => {
   if (options.title) {
     title.value = decodeURIComponent(options.title)
+  }
+})
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
   }
 })
 </script>

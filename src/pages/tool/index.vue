@@ -69,6 +69,15 @@
 import { ref } from 'vue'
 import NavBar from '@/section/a-navbar.vue'
 import { toRouter } from '@/hooks/utils'
+import { onShareAppMessage } from '@dcloudio/uni-app'
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const navs = ref([
   {

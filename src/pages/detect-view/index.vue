@@ -21,8 +21,16 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { onLoad } from "@dcloudio/uni-app";
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app'
 import $http from '@/hooks/http'
+
+onShareAppMessage(() => {
+  return {
+    title: '高清电子文档一键转换',
+    imageUrl: 'https://hnenjoy.oss-cn-shanghai.aliyuncs.com/yichuangzhisao/share.png',
+    path: '/pages/index/index',
+  }
+})
 
 const imgUrl = ref("");
 const radio = ref(null)
